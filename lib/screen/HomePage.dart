@@ -49,11 +49,11 @@ class _HomePageState extends State<HomePage> {
     final data = await json.decode(response);
     setState(() {
       _items = data["data"];
+      _items.sort((a, b) {
+        return a["timestamp"].toString().compareTo(b["timestamp"].toString());
+      });
     });
 
-    _items.sort((a, b) {
-      return a["timestamp"].toString().compareTo(b["timestamp"].toString());
-    });
     print(_items);
   }
 
